@@ -8,3 +8,4 @@ We hope to be able to cite how the bot learned about the information and also sh
 ## Contributors
 
 * [Liliana Badillo](https://github.com/lilianabs)
+* [ChatGPT Jan 30 Version](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)
