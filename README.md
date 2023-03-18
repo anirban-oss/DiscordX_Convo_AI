@@ -6,7 +6,7 @@ NLP project for KaggleX Mentorship programme.
  - NLTK
  - Gensim
  - Stanford NLP
- - Munich NLP
+ - langchain
  - HuggingFace
  - GPT3 API
  - nanoGPT by Andrej Karpathy
