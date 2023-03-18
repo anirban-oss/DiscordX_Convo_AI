@@ -1,0 +1,1149 @@
+Hsin-Wen Chang ML interview questions:
+
+Dec 13, 22
+ What is the difference between Online and Offline (Batch) learning?
+ 
+ https://www.kaggle.com/general/317514
+ 
+ Dec 14, 22
+ What is the difference between Stochastic Gradient Descent (SGD) and standard Gradient Descent (GD) 🥸 ?
+ 
+ https://www.geeksforgeeks.org/difference-between-batch-gradient-descent-and-stochastic-gradient-descent/
+ https://www.geeksforgeeks.org/gradient-descent-algorithm-and-its-variants/
+ 
+ Dec 15, 22
+ Can backpropagation work well with multiple hidden layers 🤔 ?
+ 
+ Margaret Gathoni
+ — 
+Today at 1:48 PM
+My thoughts: Backpropagation is a good tool for improving the accuracy of prediction, however it's slow, hence with multiple hidden layers means more training time.
+
+Hsin-Wen Chang
+ — 
+Today at 3:11 PM
+Good answer @Margaret Gathoni  🥳 ! Especially with sigmoid activate function the backpropagation doesn't usually work well if we have a lot of hidden layers as the diffusion of gradients leads to slow training in the lower layers. 
+
+ Dec16, 22
+ What do you understand by Rectified Linear Units (ReLU) ?
+ 
+ The Rectified Linear Unit (ReLU) is the most commonly used activation function in deep learning. The function returns 0 if the input is negative, but for any positive input, it returns that value back.
+ 
+ https://towardsdatascience.com/why-rectified-linear-unit-relu-in-deep-learning-and-the-best-practice-to-use-it-with-tensorflow-e9880933b7ef
+ 
+ https://machinelearningmastery.com/rectified-linear-activation-function-for-deep-learning-neural-networks/
+ 
+ Dec17, 22 and Dec18, 22 is off days.
+ 
+ Dec19, 22 
+ Why is the softmax function used for the output layer 🤔 ?
+
+Softmax function is used for the output layer only (at least in most cases) to ensure that the sum of the components of output vector is equal to 1 (for clarity see the formula of softmax cost function). This also implies what is the probability of occurrence of each component (class) of the output and hence sum of the probabilities(or output components) is equal to 1.
+
+Dec20, 22
+Name some of the regularization methods that could be used in Artificial Neural Networks. 🤔
+
+L1 / L2, Weight Decay, Dropout, Batch Normalization, Data Augmentation and Early Stopping
+
+https://medium.com/yottabytes/a-quick-guide-on-basic-regularization-methods-for-neural-networks-e10feb101328
+
+Dec21, 22
+Describe Convolutional Neural Networks (CNNs) what are 4 building blocks that CNNs based on 🤔 ? 
+
+For the building block CNN basics are: a convolutional layer used to to detect features in an image, a pooling layer to help fix distorted images, and a fully connected layer to process the data in a neural network. It also has a Flattening layer to turn the image into a suitable representation. I also think a ReLU is crucial building block since it  make the image smooth and make boundaries distinct.
+
+Hsin-Wen Chang
+ — 
+Today at 3:06 PM
+Good approach @Margaret Gathoni  🌟 The primary purpose of convolution is to extract the features from input image using a small matrix call filter or kernel slides over the image and the dot product (feature map) is computed. By varying the filter, we can have different result like blur, edge detection. Pooling or sub sampling such as spatial pooling (downsampling) reduce dimension of each feature map. Downsampled feature maps get distorted. This distortion provides a way for data augmentation to improve the generality of the network. pool layer doesn't fix distorted image it downsampled feature maps get distorted image perform data augmentation to improve the network. Fully connected layer is use these features for classifying the input image into various classes base on training dataset.
+
+https://cs231n.github.io/convolutional-networks/
+
+Dec22, 22
+Tell me about Recurrent Neural Networks (RNNs) 🤔 ?
+
+From my understanding they are a class/group of artificial neural networks which are mainly used in NLP and speech recognition. They use the same principal of interconnected group of nodes just like a human brain.
+
+Good answer @Margaret Gathoni 🥳 , RNNs is to make use of the sequential information. They perform the same task for every element of a sequence with the output depended on the previous computation that's why call recurrent. unlike traditional neural networks, RNNs have loop in them allow information to persist.
+
+Dec23, 22
+If the weights oscillate a lot over training iterations ( swinging between positive and negative values) what parameter do you need to tune to address this issue 🤔 ?
+
+Is this the instance where you adjust your learning rate, max and min depth, the estimator and finally the subsample which controls the data set samples that each iteration uses?
+
+Good approach 💪  @Margaret Gathoni Tuning learning rate is the correct answer. If learning rate is too high it will cause the result to jump over the optimal point resulting in the weights oscillating between positive and negative. If it's too low, it may take a very long time to converge.
+
+Dec26, 22
+What is Regularization 🤔 ?
+
+Regularization is a method to constraint the model to fit our data accurately and not overfit.
+
+Dec27, 22
+What is the difference between the L-1 and L-2 regularization 🤔 ?
+
+Margaret Gathoni
+ — 
+Yesterday at 2:31 PM
+L1 tends to shrink all  coefficients by the same factor and some are shrank to zero mostly resulting in a sparse model; L2 on the other hand also shrinks the coefficient using same factors but none of them are eliminated hence no sparse model.
+Hsin-Wen Chang
+ — 
+Yesterday at 3:17 PM
+Good answer @Margaret Gathoni 🥳 ! L1 regularization minimizes the sum of absolute errors and thus, used for feature selection in sparse feature space by making few coefficients zero. L2 minimizes the sum of squares of absolute errors used to smoothen the solution by creating small distributed coefficients. L1 is more robust since it's resistant to the outliers. L2 squares the error so for any outlier its square term would be huge.
+Margaret Gathoni
+ — 
+Yesterday at 3:24 PM
+It's even more clear why L1 is more robust on the last statement. Thank you
+
+Dec28, 22
+What is the difference between density sparse data and dimensionally sparse data 🧐 ?
+
+Margaret Gathoni
+ — 
+Today at 1:07 PM
+dense sparse means most of the values are not zero while dimensional sparse most features have zero values.
+Hsin-Wen Chang
+ — 
+Today at 1:46 PM
+Hello @Margaret Gathoni, density sparse data means that a high percentage of the data contains 0 or null value while dimensionally sparse data has large feature space in which some of the features are redundant, correlated etc.
+Margaret Gathoni
+ — 
+Today at 1:54 PM
+This is better explained. Thank you
+
+Dec29, 22
+Is it beneficial to perform dimensionality reduction before fitting an SVM? Why or why not 🧐 ?
+
+My guess is yes it's beneficial. Dimensional reduction as a form of feature scaling is important since distance between two features that are scaled to those that aren't differ significantly and especially for a sensitive model like svm. Therefore, standardizing the feature values improves the classifier performance significantly.
+
+Hsin-Wen Chang
+ — 
+Yesterday at 2:48 PM
+Good attempt @Margaret Gathoni 🤓 ! Reducing the number of features will definitely reduce the computational complexity of the model but it may not improve the performance of SVM since SVM already use regularization to prevent overfitting thus performing dimensionality reduction before SVM may not improve the performance of the SVM classifier.
+
+Dec30, 22
+Name some of the evaluation metrics you know. Something apart from accuracy 🤔 ?
+
+Daisy Chelangat
+ — 
+Today at 12:58 PM
+I guess there is also recall and precision
+PhilomenaMbura
+ — 
+Today at 12:58 PM
+F1 score
+Hsin-Wen Chang
+ — 
+Today at 1:04 PM
+Good approach @Daisy Chelangat 🥳  recall and precision are measure of a model's accuracy and we want other evaluation metrics that apart from accuracy.
+
+Hsin-Wen Chang
+ — 
+Today at 1:06 PM
+Good approach 💪 @PhilomenaMbura ! F1 score is also a measure of model's accuracy and we want other evaluation metrics that apart from accuracy 🧐 .
+Timothy Musungu
+ — 
+Today at 1:27 PM
+How about MSE and MAE?
+Margaret Gathoni
+ — 
+Today at 1:29 PM
+RMSE
+
+Hsin-Wen Chang
+ — 
+Good answer @Margaret Gathoni 🥳 ! Other evaluation metrics such as:
+1. logarithmic loss.
+2. Area under ROC curve.
+3. Mean squared error (MSE)/Root Mean Square Error(RMSE) and mean absolute error (MAE) in regression.
+Margaret Gathoni
+ — 
+Today at 5:36 PM
+Come to think of it i have never considered AUC as an evaluation metrics
+
+Hsin-Wen Chang
+ — 
+Today at 11:33 AM
+It's very less use in reality most time we use precision, recall.
+
+***many conversations***
+
+Hsin-Wen Chang
+ — 
+Yesterday at 12:22 PM
+Hello @Margaret Gathoni,
+I think I over simplify the use case  of the Precision-Recall AUC (PR AUC) vs ROC AUC before. The following is an helpful  detail reading like @Mensur Dlakic explained before:
+https://ashutoshtripathi.com/2022/01/09/what-is-the-difference-between-precision-recall-curve-vs-roc-auc-curve/ 
+
+Jan3, 23
+How would you handle the scenario where your dataset has missing or dirty values 🧐 ?
+
+For missing values you decide  depending on the data set and type of analysis you will be doing. do a a skewness test if you want to fill the missing value. The skewness test help you to know whether to fill with mean, median or mode. You can also decide to backfill or forward fill. for cleaning of data set where dealing with null values is also a part of you do validity check, accuracy check, completeness check, consistency and uniformity check. My thoughts.
+
+Jan4, 23
+How would you differentiate supervised and unsupervised learning 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 1:50 PM
+Supervised learning uses labelled data and is used to classify data or make predictions while unsupervised learning doesn't use labelled data and is used to understand relationship with in the dataset.
+Hsin-Wen Chang
+ — 
+Today at 2:10 PM
+Good answer @Margaret Gathoni 🥳 ! Supervised learning can be classified as a classification or a regression technique. Unsupervised learning is to model the distribution of the data. Unsupervised learning techniques include clustering, anomaly detection, and dimensionality reduction.
+
+Jan5, 23
+What do you mean by information gain 🤓 ?
+
+It's a measure for uncertainty or randomness of data (entropy). Mostly uses in decision trees or random forest to decide the best split. I don't know how to phrase it better
+
+It is an excellent answer 👏 🥳 @Margaret Gathoni ! The information Gain is the change in the entropy.  Decision Tree determine the root node by calculate the entropy for each variable and its potential splits. Random forest is used in Ensembling or using averages of multiple models prevent overfitting with decision tree.
+
+Jan6, 23
+Describe some of the splitting rules used by different decision tree algorithms 🧐 ?
+
+Margaret Gathoni
+ — 
+Today at 12:21 PM
+Is this where if you dealing with continuous variable in regression case you aim on variance reduction. And if you dealing with categorical variables like in classification cases you aim on Gini index , information gain and at times the Chi-square
+Hsin-Wen Chang
+ — 
+Today at 3:27 PM
+Good answer @Margaret Gathoni 💪 ! it can separate  as the following:
+Continuous variable:
+* Reduction in Variance
+Categorical variable:
+* Gini Impurity
+* Information Gain
+* Chi-Square 
+
+Jan9, 23
+Our Machine Learning interview question for the day: Is using an ensemble like random forest always good 🧐 ?
+
+Margaret Gathoni
+ — 
+Today at 12:46 PM
+I think it depends on the case at hand. Ensemble are better since they improve prediction however, they are at times hard to interpret.
+'Toba Adesugba
+ — 
+Today at 2:24 PM
+I'd say it's not always good. Sometimes ensemble can be overkill for a simple dataset when a normal algorithm could have got the job done with the same amount of accuracy.
+
+Also sometimes you may not have the time and resources that ensemble models require to perform training.
+Fauzan Mohammed
+ — 
+Today at 2:49 PM
+A machine learning model can frequently perform better when an ensemble method like the random forest is used, but it is not always the optimal option. Unfortunately, they can also be more computationally expensive and may not be required if a single model performs well enough.
+Hsin-Wen Chang
+ — 
+Today at 3:48 PM
+Excellent answers @Margaret Gathoni @'Toba Adesugba @Fauzan Mohammed 🥳 !  Ensembles generally don't perform well when the relationship between dependent and independent variables is highly linear. The classification made by Random Forests is difficult to interpret easily unlike decision trees.
+
+Jan10, 23
+What is Ensemble Learning 🤔 
+
+It's where you use multiple models for example bagging, stacking, and boosting. You combine the models to come up with improved results for you final model
+
+Outstanding answer @Margaret Gathoni 🥳 ! Comparing to  the standard machine learning approach Ensemble Learning combines a set hypotheses for prediction to boosts the weak learners hence improves the overall prediction accuracy. 
+
+Jan11, 23
+what are autoencoders🤔 ?
+
+Margaret Gathoni
+ — 
+Yesterday at 1:41 PM
+ANN used to learn efficient coding for unlabelled data. Utilized in unsupervised learning
+Aayushi Jha
+ — 
+Yesterday at 1:45 PM
+Autoencoders are a type of feed forward neural networks which are trained to reproduce their input at the output layer. It consists of two parts, an encoder and decoder along with a hidden representation layer in between. 
+
+Hsin-Wen Chang
+ — 
+Yesterday at 4:01 PM
+Good answer @Aayushi Jha @Margaret Gathoni 💪 ! In here encoding (converting the higher dimensional input to a much lower dimension hidden layers), decoding (converting the hidden layers to the output).  Autoencoders try to learn the approximation to the input and not actually predict any output it's useful as they find the low dimensional representation of the given dataset also remove any redundancy present in it.
+
+Jan12, 23
+What do you understand by Type I and Type II errors 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 2:03 PM
+Type 1 is False Positive which Type II is False Negative. Normally I interpret this using the justice example where: Type 1 (False Positive)- it's when the null hypothesis is rejected (Innocent until proven guilty) when the null  is actually true (defendant is actually innocent but ruled out as guilty). Type II (False Negative) - It's when the null hypothesis is not rejected when it's actually False to the population (defendant is actually guilty but ruled out as innocent).
+
+Jan13, 23
+What is a confusion matrix? Explain it for a 2-class problem 🤔 ?
+
+anirban chatterjee
+ — 
+Today at 5:25 PM
+A matrix which is used to figure out the accuracy of classification models. In this matrix, you're able to see both the predicted values positioned next to the actual outcomes for the datasets.
+When computing two-classification problems, you can use this matrix to find:
+
+    Accuracy rate: This is the percentage of correct predictions within a dataset.
+
+    Misclassification rate: This is the percentage of times a classifier is incorrect.
+
+    True positive rate: Also referred to as sensitivity, this allows researchers to identify correctly all the data which falls within a specific classification.
+
+    True negative rate: Also referred to as specificity, and refers to how often a classifier predicts an undesirable outcome.
+
+    False-positive rate: This represents how often a classifier is incorrect when predicting desirable outcomes.
+
+    False-negative rate: This is an error that represents how often a classifier is incorrect when predicting undesirable outcomes.
+
+    Decision rate: This is the rate at which desirable predictions turn out to be correct.
+Margaret Gathoni
+ — 
+Today at 5:27 PM
+A table used to illustrate algorithm performance using metric such as Recall, Precision, Accuracy, F1-score etc. Normally we're checking to see our model ability to identify True positive, True Negative and quantify what it classify as False Negative and False positive
+
+Jan16, 23
+Explain the Bias-Variance trade-off 🥸
+
+Margaret Gathoni
+ — 
+Today at 2:00 PM
+the bias–variance tradeoff is the property that increases the bias in an estimator can reduce the variance across samples of the parameter estimated.
+Hsin-Wen Chang
+ — 
+Today at 4:51 PM
+Good answer @Margaret Gathoni 🥳 🎉 !
+anirban chatterjee
+ — 
+Today at 4:52 PM
+Models that have high bias tend to have low variance. For example, linear regression models tend to have high bias (assumes a simple linear relationship between explanatory variables and response variable) and low variance (model estimates won’t change much from one sample to the next).
+
+However, models that have low bias tend to have high variance. For example, complex non-linear models tend to have low bias (does not assume a certain relationship between explanatory variables and response variable) with high variance (model estimates can change a lot from one training sample to the next).
+
+Jan17, 23
+When would you use k-Nearest Neighbors for regression 🧐 ?
+
+Margaret Gathoni
+ — 
+Today at 1:01 PM
+when the relationship between the independent and dependent variables is non-linear
+
+Hsin-Wen Chang
+ — 
+Today at 5:33 PM
+Good answer @Margaret Gathoni 🥳 ! We use K-NN in regression for estimating the continuous variables such as compute the Euclidean distance from the test instance to the labeled instances or order the labeled instances by increasing distance or find a heuristically optimal k nearest neighbors base on RMSE or calculate an inverse distance weighted average with the k-nearest multivariate neighbors.
+
+Jan18, 23
+What do you mean by curse of dimensionality 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 2:19 PM
+The challenges a machine learning algorithm faces when working with higher dimensions of data. Normally the  number of variables required to effectively characterize a model increases  as its dimensions (or characteristics) increase.
+Aayushi Jha
+ — 
+Today at 2:29 PM
+Number of input variables or features in a data set are referred to as a dataset's dimensionality.
+The curse of dimensionality refers to the fact that when we use large number of dimensions or have high dimensionality it can cause poor performance and overfitting in our ml model.
+anirban chatterjee
+ — 
+Today at 2:57 PM
+The curse of dimensionality basically means that the error increases with the increase in the number of features. It refers to the fact that algorithms are harder to design in high dimensions and often have a running time exponential in the dimensions. A higher number of dimensions theoretically allow more information to be stored, but practically it rarely helps due to the higher possibility of noise and redundancy in the real-world data.
+Hsin-Wen Chang
+ — 
+Today at 3:53 PM
+Excellent answers @Margaret Gathoni @Aayushi Jha @anirban chatterjee 🥳 🎉 ! When the number of features is very large relative to the number of instances in the dataset, certain ML algorithms struggle to train effective models. The problem of having a huge feature space is the curse of dimensionality. 
+
+Jan 19, 23
+How can you check if the regression model fits the data well 🤓 ?
+
+Margaret Gathoni
+ — 
+Today at 2:48 PM
+Normally look at the difference between observed values vs predicted value. The difference should be small and also unbiased
+Timothy Musungu
+ — 
+Today at 3:08 PM
+One way would be to use metrics such as R2, MAE, RMSE. A very simple way would be to create a regression plot and check if target values lie close to the regression line.
+Hsin-Wen Chang
+ — 
+Today at 3:57 PM
+Good answers @Margaret Gathoni @Timothy Musungu 🎉🥳  ! We can use the following statistics to test the model's fitness:
+R-squared->Statistical measure of how close the data points are to the fitted regression line.
+F-test -> Evaluate the null hypothesis that all regression coefficients are equal to zero versus the alternative hypothesis that at least one is not to identify the best model which fits the given dataset.
+RMSE->square root of the variance of the residuals which measure the average deviation of the estimates from the observed value.
+
+Jan20, 23
+What is a limitation of R-squared? How do you adjust it 🧐 ?
+
+Daisy Chelangat
+ — 
+Today at 12:42 PM
+One problem with R2 is that it increases with increased number of variables and this might not reflect the real picture of variability in your model. We can use adjusted R2 instead
+Daisy Chelangat
+ — 
+Today at 12:43 PM
+trial
+Hsin-Wen Chang
+ — 
+Today at 12:56 PM
+It's an excellent answer @Daisy Chelangat 🥳 ! R -squared range between 0 and 1, where 0 indicating the proposed does not improve prediction over the mean model and 1 indicating the perfect prediction. The drawback of R -squared like @Daisy Chelangat said it can increase as the predictors are added the the regression model even they are not actually improving the model's fit. We can use adjusted R-squared for model where the number of predictors is greater than 1. It incorporates the model's degrees of freedom and decreases if the increase in model fit does not make up for the loss of degrees of freedom thus it only increases when the model fit is actually improved.
+Margaret Gathoni
+ — 
+Today at 12:58 PM
+It doesn't measure how well sample data fits a distribution from a population with a normal distribution
+Hsin-Wen Chang
+ — 
+Today at 4:53 PM
+Good way of thinking @Margaret Gathoni 👏 ! R squared can't be use for checking normal distribution since it tells us the linear association between 2 random variables.
+
+Jan23, 23
+How would you evaluate a Logistic Regression model 🤔 ?
+
+Cynthia Barasa
+ — 
+Today at 12:11 PM
+To evaluate a logistic regression model, one can use several metrics, including accuracy, precision, recall, and F1 score. 
+
+A confusion matrix can be used to understand the specific errors made by the model. 
+
+Receiver Operating Characteristic (ROC) curve and the area under the curve (AUC) are also commonly used to evaluate the performance of a logistic regression model. 
+
+An  appropriate evaluation metric will depend on the specific problem and requirements of the model.
+Margaret Gathoni
+ — 
+Today at 12:20 PM
+Logistic regression evaluation it's a classification domain so we use a confusion matrix with best metrics being F1 score , you can also use Precision and Recall depending on  the case at hand . and also Accuracy even though you need to be careful with accuracy. ROC AUC can also be used to determine how much the model is capable of distinguishing between classes. 
+
+Good answers @Cynthia Barasa , @Margaret Gathoni Since Logistic Regression is used to predict the probabilities we can use AUROC curve along with the confusion matrix to determine its performance. Another way we can use AIC (Akaike Information Criterion) such as the analogous metrics of adjusted R-squared in logistic regression is AIC. AIC is the measure of fit which penalizes a model for the number of model coefficients where we prefer a model with the minimum AIC value. Another way we prefer the model with lower deviance value. Deviance represents the goodness of fit for a model.
+
+Jan24, 23
+Which metric is generally used to evaluate the performance of a
+Logistic Regression model 🤓 ?
+
+Cynthia Barasa
+ — 
+Today at 12:03 PM
+A common metric used to evaluate the performance of a logistic regression model is the accuracy.
+
+Accuracy is the proportion of correct predictions made by the model.
+
+Other evaluation metrics like precision, recall, F1-score and ROC-AUC are also used to evaluate the performance of logistic regression models.
+hannahkariuki
+ — 
+Today at 12:14 PM
+RMSE, Accracy 
+Margaret Gathoni
+ — 
+Today at 12:18 PM
+AIC
+Hsin-Wen Chang
+ — 
+Today at 12:21 PM
+Good answer @Margaret Gathoni @Cynthia Barasa  🥳 In here AIC is the most frequent, generally and widely used metric for evaluating Logistic Regression model's performance more detail reading: http://www.sthda.com/english/articles/38-regression-model-validation/158-regression-model-accuracy-metrics-r-square-aic-bic-cp-and-more/
+https://builtin.com/data-science/what-is-aic but there are some special case AIC isn't that useful detail reading:https://www.displayr.com/how-to-interpret-logistic-regression-outputs/ @hannahkariuki RMSE is used for regression, not classification detail reading https://www.kdnuggets.com/2022/04/logistic-regression-classification.html https://neptune.ai/blog/performance-metrics-in-machine-learning-complete-guide 
+
+Jan25, 23
+Explain K-Means Clustering and its objective 🤓 ?
+
+Margaret Gathoni
+ — 
+Today at 11:44 AM
+K-mean clustering is an Unsupervised algorithm used for grouping(clustering) data into predetermined clusters. The algorithm main objective is to minimize the sum of the distances between data points in each cluster.
+Chandrakala Gowda
+ — 
+Today at 11:48 AM
+The objective is to classify a test object based on the train set. Using K-number of neighbors(from the train set) that are closest/similar to the test point based on majority vote. It is an unsupervised learning. 
+hannahkariuki
+ — 
+Today at 12:16 PM
+K-means clustering is an unsupervised algorithm which involves assigning k  clusters to each example.  The objective is to minimize differences (distance) within each cluster and maximize differences between clusters.
+Hsin-Wen Chang
+ — 
+Today at 1:44 PM
+Good answers @Margaret Gathoni @Chandrakala Gowda 🥳 , K-Means Clustering is used for handling a large number of data points which partition the dataset into k clusters such that each data point belongs to the cluster with the nearest mean. Good approach @hannahkariuki 💪 ! K-Means Clustering starts from some initial clusters then reassigns data points to k clusters to minimize the total penalty.
+
+Jan26, 23
+What would you do if your model is suffering from low bias and high variance? And why? 🤔
+
+Margaret Gathoni
+ — 
+Yesterday at 12:11 PM
+low bias and high variance means there is overfitting. The model will overfit the target. It's able to perform accurately with our training data but on test data the model performs poorly. In this case I would resample the training data and see if the evaluation of the model changes and also instead of just having a training and test data set I would include a validation data set. Since our main aim is for the model to make sensible prediction from the unseen data. Bearing in mind there is no case where you can have zero of either bias or variance and that when bias-variance tradeoff comes in handy.
+hannahkariuki
+ — 
+Yesterday at 12:21 PM
+When the model is suffering from low bias and high variance, it implies that the model is overfitting. To address this, I would either reduce the number of features that is, keep only important features or regularization if all features are important this will reduce magnitude of the parameters
+Hsin-Wen Chang
+ — 
+Yesterday at 2:17 PM
+Good answers @Margaret Gathoni @hannahkariuki 🚀 🥳 ! In low bias and high variance situations, we can use bagging algorithms such as Random Forest to divide dataset into subset made with repeated randomized sampling. These samples are used to generate a set of models using a single learning algorithm. Later the model predictions are combined using voting (classification) or averaging (regression). We can also use regularization technique where the higher model coefficients get penalized such that lowering the model complexity. Also like @hannahkariuki said use top n features from the variable importance chart (The statistical significance of each variable or feature in the data with respect to its effect on the generated model).
+Andrea Ciufo
+ — 
+Yesterday at 2:21 PM
+I definetly love @Hsin-Wen Chang  questions. They help me to refresh everyday the theory behind concepts that I don't use always on daily basis https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff
+
+Jan27, 23
+Why and where do you need to use Cluster analysis 😶‍🌫️ ?
+
+Chandrakala Gowda
+ — 
+Today at 11:48 AM
+One possible application would be medical field. classification of tissue samples? or cell samples? based on the similarity of the samples for the diagnosis of tumors etc...
+Faith Were
+ — 
+Today at 11:54 AM
+We use cluster analysis to gain important insights from data by observing what clusters the data points fall into when we apply a clustering algorithm to the data.
+hannahkariuki
+ — 
+Today at 11:59 AM
+Cluster analysis is used for investigating the structure in data. The aim is in finding groups of objects with homogeneous properties out of heterogeneous large samples.
+Hsin-Wen Chang
+ — 
+Today at 12:06 PM
+Good answers @Chandrakala Gowda @Faith Were @hannahkariuki  🥳 ! Cluster analysis can be used for the initial analysis of the dataset base on the different target attributes such as the data lacking the output labels we can use clustering technique find the class labels by grouping the input data instances into different clusters then assign a unique lable to each cluster. It has been used in a wide variety of applications such as customer segmentation for marketing, weather forecast, genetic study and the use case like @Chandrakala Gowda said.
+
+Jan30, 23
+List some of the Cluster analysis methods 🤔 ?
+hannahkariuki
+ — 
+01/30/2023 12:01 PM
+1. Hierarchical methods which starts with the finest possible partition and puts groups together step by step.
+2. Partitioning methods which start from finest possible structure, compute the distance matrix for the clusters and join the clusters that have the smallest distance.
+Margaret Gathoni
+ — 
+01/30/2023 1:41 PM
+1. Partitioning e.g K-means.
+2. Heirarchical e.g agglomerative/ divisive 
+3. Density eg DBSCAN
+Mani Sarkar
+ — 
+01/30/2023 2:28 PM
+And these as well:
+- t-SNE (https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html), t-SNE and clustering (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7561036/)
+- UMAP (https://umap-learn.readthedocs.io/en/latest/), UMAP for clustering (https://umap-learn.readthedocs.io/en/latest/clustering.html) 
+Hsin-Wen Chang
+ — 
+01/30/2023 2:47 PM
+Awesome answers @hannahkariuki @Margaret Gathoni @Mani Sarkar 👍 !  Hierarchical clustering produce hierarchy of clusters by merge smaller clusters into larger ones or divide larger one into smaller ones. The merge or splitting cluster depends on the metric such as Euclidean distance, Manhattan distance, Hamming distance to measure the dissimilarity between the sets of data instances. K- means clustering is suitable for large number of data points and uses far lesser iterations than the Hierarchical clustering, it assigns the data points to k clusters so each data point belong to the cluster with the closest mean.
+
+Jan31, 23
+Differentiate between Partitioning method and Hierarchical method 🤔 .
+
+Margaret Gathoni
+ — 
+Yesterday at 2:34 PM
+For partitioning you set the number of clusters (k) before hand while for hierarchical  you don't but the model itself dictates the number of important clusters to return
+Hsin-Wen Chang
+ — 
+Yesterday at 3:55 PM
+Good answer @Margaret Gathoni 👍 ! A partition clustering is a division of the set of data objects into non-overlapping clusters thus each object is in exactly one cluster while hierarchical clustering is a set of nested clusters which are organized as a tree and is generally faster than hierarchical clustering. Another part like @Margaret Gathoni said hierarchical clustering does not require any input parameters while the partition clustering algorithms require the number of clusters to begin.
+
+Feb1, 23
+How do you select k for K-Means Clustering algorithm 😵‍💫 ?
+
+Vijaya Tatavarty
+ — 
+Today at 12:39 PM
+Using elbow method
+Margaret Gathoni
+ — 
+Today at 1:00 PM
+The Silhouette Method using the silhouette score, Elbow method using Within-cluster sum of squares (WCSS),  Interclass-intraclass distance ratio method using the Calinski-Harabasz index,
+Hsin-Wen Chang
+ — 
+Today at 2:51 PM
+Excellent answers @Margaret Gathoni @Vijaya Tatavarty 🎉 ! We want to minimize k while also minimizing average cluster variance at the same time. We can plot the number of clusters vs the average cluster variance and choose the value of k when adding more clusters doesn't have a significant impact on the cluster variance.
+
+Feb2, 23
+How would you assess the quality of the Clustering technique 🥸 ?
+
+Margaret Gathoni
+ — 
+Yesterday at 1:18 PM
+Using evaluation metrics such as Silhouette score, WCSS
+Hsin-Wen Chang
+ — 
+Yesterday at 3:07 PM
+Awesome answer @Margaret Gathoni 🎉 ! Detail reading:
+https://www.sciencedirect.com/topics/computer-science/clustering-quality
+
+Feb3, 23
+What is Principal Component Analysis?🤓
+
+Faith Were
+ — 
+Today at 1:00 PM
+PCA is used in Machine Learning for predictive models.
+It is a Statistical procedure that uses orthogonal transformation that converts a set of correlated to uncorrelated variables. It is also used in EDA (Exploratory Data Analysis).
+hannahkariuki
+ — 
+Today at 1:08 PM
+Principal Component Analysis is an unsupervised algorithm for dimensionality reduction of data where most variables are correlated. PCA achieves dimensionality reduction through transforming correlated variables to a new set of variables (PCs)which are uncorrelated such that the first few PCs retain most of the information present in the original variables. The Principal Components (PCs) are a linear combination of the original variables. 
+Margaret Gathoni
+ — 
+Today at 1:22 PM
+PCA is basically a statistical procedure to convert a set of observations of possibly correlated variables into a set of values of linearly uncorrelated variables. Each of the principal components is chosen in such a way so that it would describe most of them still available variance and all these principal components are orthogonal to each other. In all principal components first principal component has a maximum variance.
+Kehinde Olalekan
+ — 
+Today at 1:54 PM
+Principal Component Analysis (PCA) is a dimensionality-reduction method often used to reduce the dimensionality of large datasets by transforming a large set of variables into a smaller one that still contains most of the information in the large set.
+Hsin-Wen Chang
+ — 
+Today at 2:37 PM
+Excellent answers @hannahkariuki @Margaret Gathoni @Kehinde Olalekan 🥳 ! @Faith Were  very close PCA is a dimensionality reduction technique and a data pre-processing technique which transform a high dimensional feature space into smaller components that still retain most of the relevant information like @Margaret Gathoni and @Faith Were said the first component has the maximum variance in the data followed by the second component and so on with the constraint that all the components are orthogonal to each other. 
+
+Feb6, 23
+Are Dimensionality Reduction techniques Supervised or Unsupervised learning 🤓 ?
+
+Faith Were
+ — 
+Today at 12:39 PM
+Dimensionality reduction is unsupervised learning, this is because they don't use further information of the data such as class labels and can allow an unbiased view of the structure within the data.
+Margaret Gathoni
+ — 
+Today at 1:23 PM
+Unsupervised learning. However, we can use techniques like LDA in supervised learning for data transformation during pre-processing
+hannahkariuki
+ — 
+Today at 1:26 PM
+Most dimensionality reduction methods are unsupervised like PCA. But there are other supervised dimensionality reduction methods like NCA
+Hsin-Wen Chang
+ — 
+Today at 2:16 PM
+Good answers @Margaret Gathoni @hannahkariuki 🥳 ! Very close @Faith Were 💪 ! In general, we use dimension reduction technique for unsupervised learning tasks but they can also be used in supervised learning such as @Margaret Gathoni said Linear Discriminant Analysis (LDA) which is designed to find low dimensional projection that maximizes the class separation another one like Partial Least Squares (PLS) which looks for the projections having the highest covariance with the group labels. Another one like @hannahkariuki said is Neighborhood Components Analysis (NCA)  which automatically selecting the most significant features that a stochastic nearest neighbor algorithm will give the best accuracy. 
+
+Feb7, 23
+List some of the ways of reducing the dimensionality of the given dataset 🤓
+
+Margaret Gathoni
+ — 
+Today at 12:13 PM
+LDA, PCA, Factor Analysis and SVD
+Harini Anand
+ — 
+Today at 12:21 PM
+Feature selection and Feature Extraction?
+hannahkariuki
+ — 
+Today at 12:31 PM
+Feature selection which involves selecting a subset of the original features and feature extraction which involves transforming the data from high dimensional space to low dimensional space.
+Hsin-Wen Chang
+ — 
+Today at 2:47 PM
+Good answers @Margaret Gathoni @Harini Anand @hannahkariuki 🥳 ! Like @Margaret Gathoni said in PCA features are transformed into a new set of features much lesser compare to the origin which are linear combination of the original features. Forward and Backward Feature Elimination. LDA which we already discussed in previous question. Generalized discriminant analysis (GDA) for nonlinear discriminant analysis using the kernel function operator. Thank you @hannahkariuki for the awesome explanation🚀 !
+
+Feb8, 23
+How would you reduce the dimensionality of a dataset which has correlated features? 🤓
+
+Margaret Gathoni
+ — 
+Today at 1:51 PM
+PCA helps transform correlated feature into uncorrelated features. Feature selection can also be used when you have important features that have high  correlation with the target variable and select a subset of these features. LDA in case of class separation.
+Hsin-Wen Chang
+ — 
+Today at 3:37 PM
+Good answer @Margaret Gathoni 🥳 ! We can use the linear correlation node calculates the correlation coefficient for all the pairs of numerical columns in the dataset as the Pearson's Product Moment coefficient and for all pairs of nominal columns as the Pearson's chi square value. We can use it to build the correlation matrix for the features and for all the pairs of columns with correlation higher than a given threshold remove one of the two features.
+
+Feb9, 23
+What is the difference between density-sparse data and dimensionally sparse data 🤓 ?
+
+Margaret Gathoni
+ — 
+Today at 2:03 PM
+Data that is densely sparse contains a high percentage of null values, and data that is dimensionally sparse has a large feature space with redundant or complimentary features. Learnt this from your daily ML question. Xiexie
+Hsin-Wen Chang
+ — 
+Today at 3:48 PM
+Good answer @Margaret Gathoni 🥳 ! One more thing is density-sparse data means high percentage of the data contain null or 0 values. No need to say xie xie to me thank you is enough 🤓
+Oops. I found out I already ask this question before I should change a new one 😅 . 
+Our Machine Learning interview question for the day: Is it beneficial to perform dimensionality reduction before fitting an SVM? Why or why not?🤓
+'Toba Adesugba
+ — 
+Today at 4:10 PM
+I think it is beneficial to perform dimensionality reduction before fitting on SVM because SVM performs better on smaller datasets and reduced features
+Hsin-Wen Chang
+ — 
+Today at 5:05 PM
+Very close @'Toba Adesugba 💪 ! Reducing the number of features will definitely reduce the computational complexity of the model but it may not improve the performance of SVM since SVM already uses regularization to avoid overfitting that's why performing dimensionality reduction before SVM may not improve the performance of the SVM classifier unless we have a vey large number of features.
+
+feb10, 23
+Is rotation necessary in PCA? Why or why not 🧐 ?
+
+hannahkariuki
+ — 
+Today at 12:39 PM
+The rotation in PCA is necessary to increase interpretation of the Principal Components (PCs). Each PC can be interpreted as the direction that's uncorrelated to the previous PCs. This aids in the selection of new features according to how important they're in explaining the data. 
+Hsin-Wen Chang
+ — 
+Today at 2:45 PM
+Good answer @hannahkariuki 🥳 ! Like you said the rotation is necessary because it maximizes the difference between the variance captured by the components making them easier to interpret. The rotation only changes the actual coordinates of the points and not the relative location of the components. Without the rotation, we will have to select more number of components thereby lower down the effect of PCA.
+
+Feb13, 23
+What do you understand by variance threshold approach 🤓 ?
+
+Margaret Gathoni
+ — 
+Today at 1:05 PM
+Variance thresholds are used in feature selection in machine learning to remove values whose variance does not meet a threshold. Generally, variance measures how closely values are spread to the mean. A low variance means they are more similar to the mean, which means they may not be helpful for building a predictive model since they share the same values for all samples. In contrast, values with high variances are spread out from the mean, so they can provide more information and relevance when building a predictive model. The threshold is usually set, and features above the threshold are considered features of importance, while features below the threshold are not included in modeling (usually dropped).
+Hsin-Wen Chang
+ — 
+Today at 2:40 PM
+Wow excellent answer @Margaret Gathoni 🎉 ! The variance threshold approach is a simple baseline approach used for feature selection that low variance implies a less significant feature so we can remove all the features whose variances don't meet some threshold. Like @Margaret Gathoni said it removes all the features that have the same value in all samples since the variance threshold method considers only the features not the outputs we can use it in Unsupervised learning problems.
+
+Feb14, 23
+What would you do if the training results in very low accuracy?🤓
+
+'Toba Adesugba
+ — 
+Yesterday at 2:14 PM
+Hyperparameter tuning is a good choice but I don't think it increases the accuracy significantly. Feature engineering is a good way to go to increase your model's accuracy by a large margin.
+
+If you're working with neural networks, making your model more complex by adding new hidden layers could do wonders to the model accuracy.
+Brindha Ganesan
+ — 
+Yesterday at 2:59 PM
+Interesting question. Have to do something more in preprocessing steps? 🤔 I'm currently trying to improve the accuracy of a classification model. Wonder what else to do
+
+Brindha Ganesan
+ — 
+Yesterday at 4:22 PM
+@Hsin-Wen Chang Following you, can I ask an interesting question here. I found the answer for it, after giving it a thought. 
+Should I build a word cloud before the data preprocessing steps or after?
+Word cloud is often EDA right? Is there a particular order to do EDA, Data pre-processing steps?
+ 
+Margaret Gathoni
+ — 
+Yesterday at 4:43 PM
+parameter tuning, using different algorithm,
+ 
+Hsin-Wen Chang
+ — 
+Yesterday at 4:47 PM
+Good approach @'Toba Adesugba @Margaret Gathoni  💪 ! If the model is not doing anything better than random choice either there is no connection between the feature and the class. Or we can check if our model is suffering from high bias or high variance problem. Another way we can also test if there's any correlation between the features and try to either use cross validation or remove outliers and redundant features. 
+
+Hsin-Wen Chang
+ — 
+Yesterday at 5:04 PM
+In general, we do EDA first and from the EDA result decide Data pre-processing strategy or we can say we pretty much do EDA and Data pre-processing at the same time.  Data engineers also will do a part of data preprocessing but still as a Data Scientist, you have to process data into appropriate portions and manner through EDA.  Yes, the word cloud is one kind of EDA you should do it both before and after data preprocessing. 
+Brindha Ganesan
+ — 
+Yesterday at 5:07 PM
+Thank you for the insights.
+I got these questions in my mind too today. 
+1. What are all the data preprocessing steps that can be done in a text data column? 
+2. What does normalization mean in text data preprocessing step?
+I’ll try to find the answers myself. Meanwhile, everyone is encouraged to share what they know so far 😄👍
+
+Leonardo Moraes
+ — 
+Yesterday at 5:12 PM
+1. Infinity options.. hahaha
+2. Remove URL, lowercase texts, replace company names for special tags (like [COMPANY]).. Anything that could be useful to simply your texts.
+
+Sometimes a few texts are useless for your application, other times don't. So we don't have an easy way to go with it. You need to try different options
+One big challenge for NLP is work with Twitter data. Imagine how many things you need to do to "normalize" your tweets. Tags, hashtags, URL, abbreviations, etc
+Hsin-Wen Chang
+ — 
+Yesterday at 5:26 PM
+Hello @Brindha Ganesan,
+Detail implementation steps please read the following 3 notebooks these are detail concepts of all the data preprocessing and normalize steps in text data:
+https://www.kaggle.com/code/jagangupta/stop-the-s-toxic-comments-eda
+https://www.kaggle.com/code/rhodiumbeng/classifying-multi-label-comments-0-9741-lb
+https://www.kaggle.com/code/longtng/nlp-preprocessing-feature-extraction-methods-a-z 
+
+Feb15, 23
+What are the different steps in performing Text classification?🤓
+anirban chatterjee
+ — 
+Today at 3:16 PM
+Data Collection (most difficult step for me): cleaning, labeling, EDA 
+
+Data Preprocessing : text cleaning (removing special characters, numbers, and punctuation), lowercasing, stemming or lemmatization, and stopword removal.
+
+Feature Extraction (Model cannot understand text, only numbers):  bag of words, n-grams, TF-IDF, word embeddings or sentence embeddings.
+
+Modelling: Training and tuning 
+Hsin-Wen Chang
+ — 
+Today at 4:44 PM
+Good approach🥳 @anirban chatterjee ! 
+In general a text classification pipeline involves following steps:
+1. Text cleaning
+2. Text annotation to create the features
+3. Converting those features into actual predictors
+4. Using the predictors to train the model
+
+Feb16, 23
+Do you think using a particular model for training can affect the choice of a Feature Selection method?🤓 
+
+E. Emmanuel Justine
+ — 
+Today at 2:10 PM
+Yes, model choice can affect feature selection. Some model heavily penalizes some errors and lenient on some. For example, Lasso can me usually gives a heavy penalty compared to random forest.
+
+PS: I am not sure error is the actual word for what I want to say. I will appreciate any correction.
+Margaret Gathoni
+ — 
+Today at 2:26 PM
+Yes the choice of model does affect choice of feature selection. Each model has it's rules and assumptions e.g. using let's say a linear regression model. the basic assumption of this model is that the predictor variables and target have a linear relationship. That's why data understanding is crucial when making decision of the model to use.
+Hsin-Wen Chang
+ — 
+Today at 2:46 PM
+Good approach @Margaret Gathoni 🥳 ! @E. Emmanuel Justine Feature selection step is performed before learning a model from the training dataset in general a model does not force you into using a specific feature selection approach. The only way it can affect the feature selection is the model's restriction on what kind of features it can use such as if a model can only learn numerical data then you either don't select a categorical feature or you need to transform it before feeding it to your model this step is know as feature transformation or Feature engineering.
+
+Feb17, 23
+ How do you know if your model is overfitting? 🤓
+Margaret Gathoni
+ — 
+Today at 12:02 PM
+When it performs very well on training data but poorly on the test/evaluation set
+Hsin-Wen Chang
+ — 
+Today at 1:31 PM
+Good answer @Margaret Gathoni 💪 ! We can check whether the model overfits is to measure the error on the training and test datasets. If the error on the training dataset is low and high on test and/or validation dataset there likely is overfitting in the model
+anirban chatterjee
+ — 
+Today at 1:39 PM
+- High training accuracy but low validation accuracy: model is memorizing the training data, rather than generalizing to new data.
+
+- Increasing validation loss: model is becoming too complex and is fitting the noise in the data, rather than the underlying patterns.
+
+- Large difference between training and validation accuracy: small difference between the two indicates that the model is generalizing well to new data.
+
+- Poor performance on test data 
+Hsin-Wen Chang
+ — 
+Today at 1:45 PM
+Good answer @anirban chatterjee 💪 🎉 !
+Faith Were
+ — 
+Today at 2:44 PM
+You know your model is overfitting when  the model performs well on the training data but does not perform well on the test data. This is because the model is memorizing the data it has seen and is unable to generalize to new data.
+
+Feb20, 23
+What do you mean by Term Frequency and Inverse Document
+Frequency?🤔
+
+Margaret Gathoni
+ — 
+Today at 12:16 PM
+Number of times a word appears in a document vs if the word it self is a common word. To my understanding
+Hsin-Wen Chang
+ — 
+Today at 3:41 PM
+Good approach @Margaret Gathoni 💪 ! Term Frequency (tf) is the number of times a term occurs in a document divided by the total number of terms in the document. Inverse Document frequency (idf) is a measure of how relevant is the term across all the documents. It's the logarithmic of (total number of documents divided by the number of documents containing the term).
+Margaret Gathoni
+ — 
+Today at 4:16 PM
+Awesome. Thank you for the clarification
+Hsin-Wen Chang
+ — 
+Today at 4:52 PM
+You are welcome @Margaret Gathoni 🤓 !
+anirban chatterjee
+ — 
+Today at 5:23 PM
+Let's say we have a corpus of two documents, A and B. Document A contains the word "data" twice and has a total of 100 words, while document B contains "data" once and has a total of 50 words. The TF-IDF score for the word "data" in document A would be:
+
+TF = (2/100) = 0.02
+IDF = log_e(2/2) = 0
+TF-IDF = 0.02 * 0 = 0
+
+The TF-IDF score for the word "data" in document B would be:
+
+TF = (1/50) = 0.02
+IDF = log_e(2/1) = 0.693
+TF-IDF = 0.02 * 0.693 = 0.01386
+
+In this example, we can see that the TF-IDF score for "data" is higher in document B, even though it appears fewer times. This is because the word "data" is more unique to document B, making it a better indicator of the document's content.
+
+Feb21, 23
+How do you ensure that you are not overfitting a model? 🤔
+
+Nels
+ — 
+Today at 12:29 PM
+I have actually experienced model overfitting in real-life project. For my case, the overfitting was inherited from the limited data amount that unfortunately had very many features. This coupled with the complexity of my model, made the situation even worse. Luckily enough, i was able to detect the overfitting via comparison of the prediction accuracy on training and validation dataset. I reduced the overfitting through:
+
+1.  Selecting only  the most important features for training--preventing the model from learning from so many features.
+2. I also increased my current dataset volume  through data augmentation technique--the goal was to artificially increase the size of my dataset. 
+3. L1 / L2 regularization technique.
+The game of penalty term on the model's cost function also reduced the overfitting of my model.
+4. Early stopping. I believe that one can also reduce overfitting by tracking the trajectories of the validation loss, when it begins to increase, immediately stop the training and save the current model.
+Hsin-Wen Chang
+ — 
+Today at 3:51 PM
+Good answer @Nels 🥳 ! There are three main methods to avoid overfitting:
+1. Like @Nels and I mentioned previous day we can keep the model simple: reduce the variance by taking into account fewer variables and parameters thus removing some of the noise in the training data.
+2. Use cross-validation which performs multiple splitting of the dataset into training and test dataset. Train a model for each one of them then select the best learned model with least error or highest accuracy on the test dataset.
+3. Use regularization techniques like LASSO or Ridge regression which penalize certain model parameters if they are likely to cause overfitting. 
+
+Feb22, 23
+What is the difference between Feature Selection and Feature Extraction 🤓 ?
+
+Margaret Gathoni
+ — 
+Today at 12:39 PM
+The difference is in the method used, Lets say the data set used have varying value ranges(or maybe categorical values) of the variables; a form of feature extraction would be using method like dimensionality reduction(e.g PCA) where we create complete new values to represent the variables. a form of feature selection would be selecting set of relevant features where we would use VIF to make the judgement call and use the relevant features for modelling instead of all of them.
+anirban chatterjee
+ — 
+Today at 4:17 PM
+In Feature selection, we eliminate irrelevant or redundant features that may negatively impact the performance of the model or increase its complexity. 
+
+Feature extraction is when there are correlations among original features that can be captured in a lower dimensionality, that captures the most important information from the original features.
+Hsin-Wen Chang
+ — 
+Today at 4:44 PM
+Good approach @Margaret Gathoni @Margaret Gathoni 💪 ! Feature selection means selecting a subset of features from the given features. Some of the ways to perform feature selection are Forward Selection and backward Elimination. On the other hand feature extraction means projecting the given feature space into a new feature space such as in SVD and PCA.
+
+Feb23, 23
+Explain cosine similarity in a simple way 🤔 ?
+
+Margaret Gathoni
+ — 
+Yesterday at 12:18 PM
+My simplest way I will use NLP scenario. Cosine similarity generally is a metric used to describe how similar data objects are irrespective of their size(like how we calculate cosine in math) mainly constrained to 0 and 1. In NLP we use the metric to determine how similar the documents are irrespective of their size (can be use when trying to detect forgery in documents like handwriting).
+Nels
+ — 
+Yesterday at 12:57 PM
+For two vector buckets X, Y filled with information (words). If vector X and Y have  similar length.  Cosine similarity can be used to evaluate the similarities between the vector data. Cosine similarity is equivalent to the dot product of the two vectors.  Cosine similarity of -1, 0 and 1 indicates dissimilarity, complete dissimilarity and similarity respectively.  I think it is applied in plagiarism detection applications.
+Hsin-Wen Chang
+ — 
+Yesterday at 4:36 PM
+Good answer @Margaret Gathoni  💪 ! Like @Margaret Gathoni and @Nels mentioned cosine similarity captures the similarity between 2 vectors each document and the query is written as a vector of terms. The cosine is calculated for the query vector with each document which is normal cosine between two vectors. The resulting cosine value represents the similarity of the document with the given query. If the cosine value is 0 there is no similarity at all and if is 1 the document is the same as the query. Detail reading: https://mtham8.github.io/tf-idf/
+
+Feb24, 23
+Explain N-gram method 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 2:14 PM
+A technique used in NLP in sequence detection like when we want to determine the next word in a sequence. Normally you predict the probability of next sequence of words by using prior probability of previous sequence of words.
+Hsin-Wen Chang
+ — 
+Today at 2:57 PM
+Good answer @Margaret Gathoni 🎉 ! N-gram method is a probabilistic model used to predict an item in a sequence based on the previous n-1 items.
+
+Feb27, 23
+What is a chi-squared test 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 11:50 AM
+A test used to compare observed vs expected values. So what happens is you get the difference of the two , then square the difference and divide by expected value. You then do this to all categories and then add these values to get the chi square.
+Chiemela Chinedum
+ — 
+Today at 11:51 AM
+A chi-squared test is a statistical test used for categorical data. It is used to determine whether your data is different from what you expected significantly.
+Hsin-Wen Chang
+ — 
+Today at 12:07 PM
+Good approach @Margaret Gathoni @Chiemela Chinedum 💪 ! A chi-squared test is a statistical hypothesis test where the test statistic follows a chi-squared distribution (a distribution of the sum of squared standard normal deviates) under the null hypothesis. It measures how well the
+observed distribution of data fits with the expected distribution if the variables are independent.
+
+Feb28, 23
+Define F-test. Where would you use it? 🤓
+
+Margaret Gathoni
+ — 
+Today at 12:41 PM
+It used to test the variability of two data set to tell if drawn from normal population
+Chiemela Chinedum
+ — 
+Today at 12:58 PM
+F-test is used to compare the ratio of variances of populations to determine if they are similar or not statistically. 
+It can be used for comparing statistical models that have been fitted to a data set and also by researchers to test the significance of data from a particular population
+Hsin-Wen Chang
+ — 
+Today at 2:35 PM
+Good answer @Chiemela Chinedum @Margaret Gathoni  💪 ,
+An F-test is any statistical hypothesis test where the test statistic follows an F-distribution under the null hypothesis. If we have 2 models that have been fitted to a dataset, we can use F-test to identify the model which best fits the sample population. 
+Faith Were
+ — 
+Today at 3:24 PM
+F-test is a statistical test with an F-distribution under null hypothesis and is used when comparing statistical models fitted on a dataset in order to identify the model that fits best with the sampled population.
+
+Mar1, 23
+How much data should you allocate for your training, validation, and test datasets? 🤔 
+
+Mercy Consolate Akello
+ — 
+Today at 12:30 PM
+Training data should take a large part of data (70/80) % and the validation/ test data should take the smaller part of the data (30/20) %
+Margaret Gathoni
+ — 
+Today at 12:59 PM
+I think it depends on the case scenario and the model to use however a lot of data if needed for training,,but also validation and test data is crucial too,,, so I would say 7:1:2
+Chiemela Chinedum
+ — 
+Today at 1:55 PM
+It actually depends on some factors. 
+Making the training set too small might cause a high variance in the model parameters. Also, there is a potential that the model performance will not be accurately estimated if the test set is too small. It  generally could be 70:30 or 80:20 train/test split
+Hsin-Wen Chang
+ — 
+Today at 3:50 PM
+Good answers @Mercy Consolate Akello @Margaret Gathoni @Chiemela Chinedum 💪 ! There is no single right answer for distributing the data among training, validation and test datasets. If training set is too small, our actual model parameters will have high variance and won't be able to learn accurately. If test set is too small, we will have unreliable estimation of model performance. A good rule of thumbs is to split the training and test dataset in the ratio 80:20. The training set can be further divided into training and validation sets or into partitions for cross-validation to avoid overfitting.
+
+Mar2, 23
+What could be the reasons for Gradient Descent to converge slowly or not converge at all in various Machine Learning algorithms 🤔 ?
+
+anirban chatterjee
+ — 
+Today at 6:55 PM
+If the learning rate is too high, the algorithm may overshoot the minimum and fail to converge, if the learning rate is too low, the algorithm may take too many iterations to converge.
+Hsin-Wen Chang
+ — 
+Today at 12:16 PM
+Good answer @anirban chatterjee 🎉 If the step size or learning rate is too small, our function will take a long time to converge, and if it is too large, our function may jump around the optimum value and not converge. It may converge slowly in case of a Symmetric Positive Definite (SPD) matrix. The eigenvalues lay down the curvature of the function, and in case of SPD, they are all positive and generally different, which leads to a non-circular contour such that converging to the optimal point would take a lot of steps. In short, the more circular the contour is, the faster our algorithm would converge. Sometimes, due to the rounding errors, the Gradient Descent may not converge at all. The gradient descent method generally stops when the expected cost/error is either zero or very small. However, because of the rounding errors, our error might never become absolute zero, in this case our algorithm would keep converging.  If our function does not have a minimum, the gradient descent would continue to descend forever. Some functions are not differentiable in certain regions, and the gradient cannot be calculated at those points. One thing need to correct neural network models are  part of Advanced Learning Algorithms detail read: https://github.com/shantanu1109/Coursera-DeepLearning.AI-Stanford-University-Machine-Learning-Specialization/blob/main/Course-2-Advanced-Learning-Algorithms/Course-2-Week-2/Course-2-Week-2-Lecture-Slides/Course-2-Week-2.pdf 
+
+Mar3, 23
+What is a probabilistic graphical model? What is the difference between Markov Networks and Bayesian Networks 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 3:20 PM
+PGM shows probability distribution and relationship between variables. They are two types which is BN and MN with differentiating factor being how relationship between variables are encoded. for example for BN  it models conditional independence among variables using directed edges, while MN use undirected edges to model pairwise independence.
+Hsin-Wen Chang
+ — 
+Today at 5:03 PM
+Good answer @Margaret Gathoni 🥳 ! Your answer is very creative. A probabilistic graphical model represents the conditional dependency among the random variables in a graph structure. It used in modeling a large number of random variables with complex interactions with each other. Like @Margaret Gathoni said the two branches of the graphical representation of the distribution are Markov Network and Bayesian Networks. They differ in the set of independence that they can encode.
+Bayesian Networks (When the model structure is a Directed Acyclic Graph (DAG), the model represents a factorization of the joint probability of all the random variables. It capture the conditional in dependance between the random variables, reduce the number of parameters required to estimate the joint probability distribution) .
+While Markov Networks are used when the underlying network structure is an undercut graph follow the Markov process such as given the current state. Markov Networks represent the distribution of the sequence of the nodes.
+
+Mar6, 23
+ How would you handle the scenario where your dataset has missing or dirty (garbled) values 🤓 ?
+ 
+Margaret Gathoni
+ — 
+Today at 12:55 PM
+personally I check the percentage that's missing if it's above like 50% I drop the columns, below 50% I now deal with them in different ways. First I check for skewness to know if to use  measures of central tendency or go a different route. If data is skewed I interpolate; if not skewed I use either mean/mode/median depending on the variable values and data type.
+Hsin-Wen Chang
+ — 
+Today at 3:52 PM
+Good answer @Margaret Gathoni 👍 . These kind of situations are very common in real life sometimes the data is missing or empty or have some unexpected values such as special characters while performing data transformations or saving/fetching the data from the client/server sometimes we expect an ASCII string but receive a Unicode string this may result in garbled data in our string. Like @Margaret Gathoni said we can either drop those row or columns or replace the missing/garbled values with other values such as the mean value of that column or the most occurring value. The latter case is known as "Parameter Estimation". Expectation Maximization (EM) is one of the algorithms used for this case. It's an iterative method to find the maximum likelihood or maximum a posteriori (MAP) estimates of the parameters in statistical models.
+
+julia-suzuki
+ — 
+Yesterday at 7:46 PM
+"Parameter Estimation" sounds like "Imputation". Are they the same. If they are different, how so?
+Hsin-Wen Chang
+ — 
+Today at 12:29 PM
+Imputation is one of the algorithms to perform Parameter Estimation like Expectation Maximization (EM) is one of the algorithms to perform Parameter Estimation which also impute the values. They are all used to estimate the missing/garbled values.
+ Detail readings:
+https://stackoverflow.com/questions/58364751/how-to-implement-expectation-maximization-imputation-method-using-python
+https://towardsdatascience.com/handling-missing-data-like-a-pro-part-3-model-based-multiple-imputation-methods-bdfe85f93087
+https://yangxiaozhou.github.io/data/2020/10/20/EM-algorithm-explained.html
+https://scikit-learn.org/stable/modules/impute.html#estimators-that-handle-nan-values 
+
+Mar7, 23
+What is Expectation Maximization (EM) algorithm? 🤓
+
+Margaret Gathoni
+ — 
+Today at 1:52 PM
+From the reading above, Expectation Maximization (EM)  is an iterative suitable to handle missing data since it handles unobserved variables. Normally it inputs missing values using the maximum likelihood with help of present variables, generates the parameters, reinputs the values based on the parameter estimate and then  the parameter based on the imputed data. This process continues until the parameter estimates are no longer changing as per the set threshold.
+
+Mar8, 23
+How can you get an unbiased estimate of the accuracy of the learned model 🤓 ?
+
+anirban chatterjee
+ — 
+Today at 3:33 PM
+Divide the input dataset into training and test datasets. Build the model using
+the training dataset and measure its accuracy on the test dataset.
+ 
+For better results, one can use Cross-validation to run multiple iterations of partitioning
+the dataset into the training and test datasets, analyze the accuracy of the
+learned model in each iteration and finally use the best model from the
+learned models.
+
+Mar9, 23
+How do we estimate the coefficients in Logistic Regression 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 11:35 AM
+Given a collection of predictors, the logistic regression model evaluates the likelihood of an event occurring. In logistic regression, the coefficients represent the change in log-odds of the dependent variable per unit change in the independent variable. Maximum likelihood estimation is the most commonly used approach for estimating the coefficients in logistic regression (MLE). MLE's purpose is to identify the coefficient values that optimize the likelihood of witnessing the data. The likelihood is a function of the model's parameters (coefficients), and it indicates how well the model fits the data.
+Hsin-Wen Chang
+ — 
+Today at 11:58 AM
+Good answer @Margaret Gathoni 💪 ! Remember put (MLE) after Maximum likelihood estimation. We also can use  Stochastic Gradient Descent calculate a prediction using the current values of the coefficients base on the prediction error then update the coefficient values iteratively until the accuracy reaches a threshold.
+
+Mar10, 23
+How can you speed up the k-NN’s computation  classification/prediction time? 🤓
+
+Margaret Gathoni
+ — 
+Today at 5:19 PM
+dimensionality reduction, feature selection, using the best approximate k-NN
+Hsin-Wen Chang
+ — 
+Today at 5:43 PM
+Good answer @Margaret Gathoni 💪 ! We can apply an undersampling method call Edited Nearest Neighbor (ENN) which only use a subset of training dataset and still able to provide accurate classification
+https://imbalanced-learn.org/stable/references/generated/imblearn.under_sampling.EditedNearestNeighbours.html
+Another way we can use KD tree perform nearest neighbor and range searches.
+https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KDTree.html 
+
+mar13, 23
+What is a Decision Tree? 🤔
+
+Sesugh Abenga
+ — 
+Today at 12:42 PM
+It's a Binary Tree based algorithm that recursively  splitts the data till we have pure leaves. This algorithm can be used for Classification and Regression Problem.
+Margaret Gathoni
+ — 
+Today at 12:49 PM
+It a supervised machine learning algorithm that's non parametric where data is split according to a certain parameter. The tree is normal defined by nodes and leaves which helps to further breakdown the data. It can be used for both classification and regression case.
+Hsin-Wen Chang
+ — 
+Today at 3:46 PM
+Good approaches @Margaret Gathoni @Sesugh Abenga 🙌 🥳 ! Decision tree can handle numerical or  categorical feature. The leaf nodes represent all the possible outcomes within the dataset. The feature at each node is calculate based on the information gain and the one with the maximum gain is more valuable. Detail readings: https://www.ibm.com/topics/decision-trees 
+
+Mar14, 23
+May you describe when we will need to use a decision tree? Can you also provide the disadvantages using a decision tree? 🤔
+
+Sesugh Abenga
+ — 
+Today at 2:30 PM
+Decision Tree can be used when the problem requires a simple model and explainable, that needs limited computation power. As for the disadvantages.. Its prone to overfiting and a little change in the data can lead to different tree. Also produces imbalance trees using imbalance data.
+Hsin-Wen Chang
+ — 
+Today at 12:02 PM
+Good answer @Sesugh Abenga 🥳 💪 ! Other con like Decision Trees are not good at applying regression to predict continuous values. Since continuous variable can have an infinite number of values within an interval compare to a tree can only have a limit number of leaves and branches.
+Here is a great discussion of "When Would You Prefer a Decision Tree?" in kaggle learn:
+https://www.kaggle.com/discussions/getting-started/60582 
+
+Mar15, 23
+What is pruning? 🤓
+
+Margaret Gathoni
+ — 
+Today at 12:48 PM
+Reducing the size of decision tree. It can be through removing redundant features or highly correlated features. Generally through feature selection.
+Hsin-Wen Chang
+ — 
+Yesterday at 5:56 PM
+Awesome answer @Margaret Gathoni 💪 ! Pruning can help us reduce the complexity by removing subtree whose existence doesn't impact the accuracy  of the model by evaluating the impact of pruning each node on the validation set accuracy removing the one that most improves the tuning dataset accuracy.
+
+Mar16, 23
+How does Regularization help reduce Overfitting? Can you talk a little bit more of different Regularization techniques in Deep Learning? 🤓
+
+Margaret Gathoni
+ — 
+Today at 12:47 PM
+Regularization reduces overfitting by adding penalty to the loss function that encourages smaller weights or fewer non zero weights. Some of regularization techniques include and not limited to L1 and L2. L1 adds penalty to the absolute value of the weight while L2 squares the weights.
+Hsin-Wen Chang
+ — 
+Today at 2:14 PM
+Awesome answer @Margaret Gathoni 💪 🥳 ! A detail reading for this topic:
+https://www.kaggle.com/code/sid321axn/regularization-techniques-in-deep-learning/notebook
+
+Mar17, 23
+Can you provide some idea to approach web traffic time series forecasting (long time series up to 700 days)? 🤓 
+Margaret Gathoni
+ — 
+Today at 12:47 PM
+The idea is to for example help make a data driven decision for  better congestion control. Before deciding on the best approach i need to consider some factors such volume of data (in this scenario it states long time meaning the volume is big) , time and forecast frequency. So with very huge data autoregression methods comes in handy for time series data and the choice of best approach of the method to use depends on the characteristic of the data at hand. Therefore a deep dive in data understanding will help in considering the best approach all factors considered
+Hsin-Wen Chang
+ — 
+Today at 7:40 PM
+Good approach @Margaret Gathoni 🚀 ,  We can apply RNN seq2seq model here. It is kind like ARIMA models, but much more flexible and expressive. All features (including one-hot encoded) are normalized to zero mean and unit variance. if original time series length is 700 days then we can use 200-day samples for training, we'll have a choice of 500 days to start the sample. This sampling works as effective data augmentation mechanism: training code randomly chooses starting point for each time series on each step, generating endless stream of almost non-repeating data. The Model has two main parts: encoder (cuDNN GRU) and decoder(TF GRUBlockCell). Attention can bring useful information from a distant past to the current RNN cell. We can use fixed-weight sliding-window attention then pass them through fully connected layer to reduce dimensionality and append result to input features for decoder.
+
