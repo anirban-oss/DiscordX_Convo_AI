@@ -1,0 +1,38 @@
+---
+- answers:
+    - name: Mani Sakar
+      content: For missing values you decide  depending on the data set and type of analysis you will be doing. do a a skewness test if you want to fill the missing value. The skewness test help you to know whether to fill with mean, median or mode. You can also decide to backfill or forward fill. for cleaning of data set where dealing with null values is also a part of you do validity check, accuracy check, completeness check, consistency and uniformity check. My thoughts.
+  date: '2023-01-03'
+  question: How would you handle the scenario where your dataset has missing or dirty values � ?
+- answers:
+    - name: Margaret Gathoni
+      content: Supervised learning uses labelled data and is used to classify data or make predictions while unsupervised learning doesn't use labelled data and is used to understand relationship with in the dataset.
+    - name: Hsin-Wen Chang
+      content: Good answer @Margaret Gathoni 🥳 ! Supervised learning can be classified as a classification or a regression technique. Unsupervised learning is to model the distribution of the data. Unsupervised learning techniques include clustering, anomaly detection, and dimensionality reduction.
+  date: '2023-01-04'
+  question: How would you differentiate supervised and unsupervised learning �?
+- answers:
+    - name: Margaret Gathoni
+      content: It's a measure for uncertainty or randomness of data (entropy). Mostly uses in decision trees or random forest to decide the best split. I don't know how to phrase it better
+    - name: Hsin-Wen Chang
+      content: It is an excellent answer 👏 🥳 @Margaret Gathoni ! The information Gain is the change in the entropy.  Decision Tree determine the root node by calculate the entropy for each variable and its potential splits. Random forest is used in Ensembling or using averages of multiple models prevent overfitting with decision tree.
+  date: '2023-01-05'
+  question: What do you mean by information gain �?
+- answers:
+    - name: Margaret Gathoni
+      content: Is this where if you dealing with continuous variable in regression case you aim on variance reduction. And if you dealing with categorical variables like in classification cases you aim on Gini index , information gain and at times the Chi-square.
+    - name: Hsin-Wen Chang
+      content: Good answer @Margaret Gathoni 💪 ! it can separate  as the following.Continuous variable; * Reduction in Variance. Categorical variable; * Gini Impurity, *Information Gain, * Chi-Square.
+  date: '2023-01-06'
+  question: Describe some of the splitting rules used by different decision tree algorithms 🧐 ?
+- answers:
+    - name: Margaret Gathoni
+      content: I think it depends on the case at hand. Ensemble are better since they improve prediction however, they are at times hard to interpret.
+    - name: Toba Adesugba
+      content: I'd say it's not always good. Sometimes ensemble can be overkill for a simple dataset when a normal algorithm could have got the job done with the same amount of accuracy.\n Also sometimes you may not have the time and resources that ensemble models require to perform training.
+    - name: Fauzan Mohammed
+      content: A machine learning model can frequently perform better when an ensemble method like the random forest is used, but it is not always the optimal option. Unfortunately, they can also be more computationally expensive and may not be required if a single model performs well enough.
+    - name: Hsin-Wen Chang
+      content: Excellent answers @Margaret Gathoni @'Toba Adesugba @Fauzan Mohammed 🥳 !  Ensembles generally don't perform well when the relationship between dependent and independent variables is highly linear. The classification made by Random Forests is difficult to interpret easily unlike decision trees.
+  date: '2023-01-09'
+  question: Is using an ensemble like random forest always good 🧐?
