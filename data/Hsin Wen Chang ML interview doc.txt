@@ -1147,3 +1147,157 @@ Hsin-Wen Chang
 Today at 7:40 PM
 Good approach @Margaret Gathoni 🚀 ,  We can apply RNN seq2seq model here. It is kind like ARIMA models, but much more flexible and expressive. All features (including one-hot encoded) are normalized to zero mean and unit variance. if original time series length is 700 days then we can use 200-day samples for training, we'll have a choice of 500 days to start the sample. This sampling works as effective data augmentation mechanism: training code randomly chooses starting point for each time series on each step, generating endless stream of almost non-repeating data. The Model has two main parts: encoder (cuDNN GRU) and decoder(TF GRUBlockCell). Attention can bring useful information from a distant past to the current RNN cell. We can use fixed-weight sliding-window attention then pass them through fully connected layer to reduce dimensionality and append result to input features for decoder.
 
+Mar20, 23
+Can you list some of some of the Feature extraction techniques used for Dimensionality Reduction? 🤓 
+
+Margaret Gathoni
+ — 
+Today at 1:02 PM
+LDA, PCA, t-SNE
+anirban chatterjee
+ — 
+Today at 1:27 PM
+Autoencoders can learn to compress high-dimensional data into a lower-dimensional representation, and then reconstruct the original data from this representation.
+Hsin-Wen Chang
+ — 
+Yesterday at 3:52 PM
+Awesome answer @Margaret Gathoni @anirban chatterjee 🥳 ! Other methods like Principal Component Analysis (PCA), Kernel Based PCA, Singular Value Decomposition (SVD) and Independent Component Analysis (ICA). Detail readings:
+https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html
+https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html
+https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html
+https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FastICA.html
+
+Mar21, 23
+Can you list some difference between CatBoost, XGBoost and LightGBM 🥸 ?
+
+anirban chatterjee
+ — 
+Today at 2:39 PM
+CatBoost can handle categorical features directly, without the need for one-hot encoding or label encoding. CatBoost can handle missing values directly, without the need for imputation or pre-processing.
+
+LightGBM is generally the fastest library but XGBoost and CatBoost use a pre-sorting technique, which can be slower on large datasets, but they have been shown to achieve similar or better accuracy compared to LightGBM.
+
+XGBoost and CatBoost may be slower and require more memory for large datasets.LightGBM is generally better suited for large datasets, as it can handle a large number of features and has a low memory footprint. 
+Hsin-Wen Chang
+ — 
+Today at 3:51 PM
+Good try @anirban chatterjee 💪 ! Only two things need to be correct only XGBoost use a pre-sorting technique not CatBoost and CatBoost provides scalability by supporting multi-server distributed GPUs. Its prediction time came out to be faster than XGBoost and LightGBM on large datasets this is extremely important for low latency environments. If it's training time like @anirban chatterjee said LightGBM outperformed every other model in training time. More detail reading:
+https://neptune.ai/blog/when-to-choose-catboost-over-xgboost-or-lightgbm 
+
+Mar22, 23
+List some of the different stages to build the hypotheses or model in machine learning 🥸 ?
+
+anirban chatterjee
+ — 
+Today at 1:47 PM
+Problem definition, data collection, exploratory data analysis, data preparation, feature selection, model building
+Hsin-Wen Chang
+ — 
+Today at 3:37 PM
+Good answer @anirban chatterjee 🥳 .  In machine learning, the three processes for constructing hypotheses are model building, model testing, and model application. Model construction involves learning from the training dataset and applying it to create a machine learning model. Model testing involves utilizing the test dataset to evaluate the learned model. Applying the model: Up until the learned model achieves the required accuracy, model development and testing are iterative. The finished model is then applied to the fresh data.
+anirban chatterjee
+ — 
+Today at 3:42 PM
+sorry i thought you asked steps upto making hypotheses, i got it wrong :/
+Hsin-Wen Chang
+ — 
+Today at 3:50 PM
+Don't be sorry your response is excellent and a necessary component of model construction. This type of query may not have a predetermined answer. 🌞 🌻
+
+Mar23, 23
+please define sampling and list some of the sampling techniques 🥸 ?
+
+J. Ndambuki
+ — 
+Today at 1:51 PM
+Sampling means selecting a group from which you will collect data for your research.
+Sampling techniques include:-
+     1. Probability sampling ( e.g. Cluster, Simple random, stratified)
+    2. Non-probability sampling (e.g. Convience, voluntary, purposive)
+
+Mar24, 23
+What is stratified sampling 🤔 ?
+
+Brindha Ganesan
+ — 
+Today at 12:42 PM
+A method of sampling… dividing the population into sub-groups…
+J. Ndambuki
+ — 
+Today at 1:00 PM
+It's a method of sampling in which a population is divided into smaller groups that don't overlap but represent the entire population.
+Hsin-Wen Chang
+ — 
+Today at 1:56 PM
+Good answer @J. Ndambuki @Brindha Ganesan 🥳 💪 ! With stratified sampling, a probability sample is selected proportionally from each stratum after the entire population has been divided into various subgroups, or strata. In a binary classification, for instance, if the ratio of the positive to the negative labeled data was 9:1, stratified sampling would include randomly choosing a subsample from each of the positive and negative labeled datasets to ensure that, after sampling, their ratio remained 9:1. Comparing stratified sampling to random sample, there are various benefits. By utilizing stratified sampling, for instance, it would be able to improve precision while using a smaller sample size or decrease the sample size needed to attain the same precision. 
+Detail reading:
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedShuffleSplit.html
+
+Mar27, 23
+What are the methods to extract features from audio ? 🤔 Please provide a brief explanation of those methods.
+
+Margaret Gathoni
+ — 
+Today at 12:17 PM
+For methods used to extract features from audio the aim is changing the speech waveform to a form of parametric representation at a relatively lesser data rate for subsequent processing and analysis. What I have used before was a package called PyAudioAnalysis which simplify the feature extraction and classification process by providing a number of helpful tools that can sift through the signal and create relevant features
+Hsin-Wen Chang
+ — 
+Today at 3:39 PM
+Awesome answer @Margaret Gathoni 💪 🥳 ! One of the approach to extracting features from an audio file is by using Mel Frequency Cepstral Coefficents (MFCCs). The MFCC divides the frequency band into sub-bands using the MEL scale before extracting the Cepstral Coefficents using the Discrete Cosine Transform (DCT). The MEL scale is particularly practical for processing sounds because it is based on how humans discern between frequencies. Detail readings:
+https://www.kaggle.com/c/birdsong-recognition/discussion/172573
+https://www.kaggle.com/code/ilyamich/mfcc-implementation-and-tutorial
+
+Mar28, 23
+When to choose Upsampling and when to choose Downsampling 🤔 ?
+
+Margaret Gathoni
+ — 
+Yesterday at 12:22 PM
+They are both example methods of handling class imbalance. Upsampling we are duplicating observation from the minority class while down sampling you removing observation from the majority class. The method used to solve the imbalance depends on the objective and what the data tells you
+Esha Mishra
+ — 
+Yesterday at 1:35 PM
+Upsampling should be used in most cases. If we have huge dataset and face memory scarcity, we should downsample.
+Hsin-Wen Chang
+ — 
+Yesterday at 3:44 PM
+Good answers @Margaret Gathoni @Esha Mishra 🥳 !
+Here is the detail recommend reading:
+https://towardsdatascience.com/5-techniques-to-work-with-imbalanced-data-in-machine-learning-80836d45d30c
+
+Mar29, 23
+Please explain Mixup and CutMix Augmentations 🤔 ?
+
+Margaret Gathoni
+ — 
+Today at 12:43 PM
+In CutMix, you cut out random portions of one image, and in MixUp, you interpolate pixel values between two images.
+Esha Mishra
+ — 
+Today at 1:32 PM
+1. In CutMix we replace image pixels with the pixels of another training image. The ground truth labels are also mixed in proportion to the area of patches in the images.
+
+2. In Mixup, two random images from training data are used to generate a weighted combination.
+
+Both prevent overfitting. They also overcome data loss that we face in Cutout augmentation. For object detection task CutMix seems to work better. 
+Hsin-Wen Chang
+ — 
+Today at 3:44 PM
+Good answer @Margaret Gathoni @Esha Mishra 💪 🥳 ! MixUp interpolates the pixel values between two photos, while CutMix arbitrarily selects regions of one image to overlay on another. Both of these reduce the risk that the model would overfit the training distribution and increase the model's ability to generalize to out of distribution examples.
+Detail readings:
+https://www.kaggle.com/code/cdeotte/cutmix-and-mixup-on-gpu-tpu
+https://www.kaggle.com/code/saife245/cutmix-vs-mixup-vs-gridmask-vs-cutout
+
+Mar30. 23
+May you list some types of Augmentations  for audio data 🤓 ?
+
+Margaret Gathoni
+ — 
+Today at 1:03 PM
+filtering, distortion, reverberation, volume scaling, Noise injection a few of what i can recall
+Hsin-Wen Chang
+ — 
+Today at 3:24 PM
+Good try @Margaret Gathoni 💪 ! We can apply the following types of Augmentations  for audio data:  AudioAug: Enhancements that will be made to audio data directly. Such as use CutMix, MixUp, Random CropPad, and Gaussian Noise. Data augmentations that will be made to spectrograms are designated as SpecAug. Sunch as TimeFreqMask.
+Detail reading:
+https://www.kaggle.com/code/awsaf49/birdclef23-pretraining-is-all-you-need-train#Data-Augmentation-%F0%9F%8C%88
